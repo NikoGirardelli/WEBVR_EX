@@ -1,0 +1,33 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+  </head>
+
+  <body>
+    <a-scene stats>
+
+      <!-- Les assests -->
+      <a-assets>
+        <img id="skyTexture"src="https://aframe.io/sample-assets/assets/images/envmap/envmap.png" crossorigin="anonymous">
+        <img id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg" crossorigin="anonymous">
+
+        <!-- Les assests importé 3D -->
+        <a-asset-item id="arbre-material" src="models/Lowpoly_tree_sample.mtl"></a-asset-item>
+        <a-asset-item id="arbre-object" src="models/Lowpoly_tree_sample.obj"></a-asset-item>
+
+
+      </a-assets>
+
+      <!-- Les assests défauts -->
+      <a-light type="ambient" color="#0080ff" position="-10 0 0" look-at="#perso"></a-light>
+      <a-light type="point" color="#ff8040" position="0 5 0"></a-light>
+      <a-sky src=#skyTexture color="#262626"></a-sky>
+      <a-entity geometry="primitive:plane" position="0 0 0" scale="10 10 10" rotation="270 0 0"></a-entity>
+
+      <!-- Le model importé -->
+      <a-obj-model id="arbre" mtl="#arbre-material" src="#arbre-object" position="0 0 -2" rotation="0 0 0" scale="1 1 1"></a-obj-model>
+
+    </a-scene>
+  </body>
+</html>

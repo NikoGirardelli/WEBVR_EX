@@ -1,0 +1,33 @@
+<!DOCTYPE>
+<html>
+
+  <head>
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+  </head>
+
+  <body>
+    <a-scene stats>
+
+      <!-- Les assests -->
+      <a-assets>
+        <img id="trollface" src="img/Trollface-PNG.png">
+      </a-assets>
+
+      <!-- Le ciel et le sol -->
+      <a-sky src="#skyTexture"></a-sky>
+      <a-plane color="#008000" rotation="-90 0 0" width="30" height="30"></a-plane>
+      <a-light type="point" color="#00ff00" position="0 5 0"></a-light>
+
+      <a-image src="#trollface" width="4" height="4" position="5 4 -4"></a-image>
+
+      <a-curvedimage
+        src="#trollface"
+        radius="5" height"15"
+        theta-length="361" rotation="0 0 0"
+        position="0 2 0" scale="0.8 8 0.8">
+      </a-curvedimage>
+    </a-scene>
+
+  </body>
+
+</html>

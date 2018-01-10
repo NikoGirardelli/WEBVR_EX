@@ -1,0 +1,71 @@
+<!DOCTYPE>
+<html>
+
+  <head>
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+  </head>
+
+  <body>
+    <a-scene stats>
+
+      <!-- Les assests -->
+      <a-assets>
+        <img id="texture" src="https://i.imgur.com/mYmmbrp.jpg">
+        <img id="skyTexture"src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg">
+        <img id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg">
+      </a-assets>
+
+      <!-- Les objets dans la scène -->
+      <a-box id="box" width="2" height="1" depth="1"
+        position="0 2 -4"
+        rotation="0 0 0"
+        scale="1 2.5 1">
+        <a-animation attribute="rotation" begin="click" repeat="indefinite" to="0 360 360"></a-animation>
+        <a-animation attribute="material.color" begin="mouseenter" repeat="0" from="black" to="white" ease="elastic"></a-animation>
+        <a-animation attribute="material.color" begin="mouseleave" repeat="0" from="white" to="black" ease="elastic"></a-animation>
+        <!-- Évènement lorsque la souris est dessus la boîte
+        <a-event name="mouseenter" scale="4 4 6"></a-event> -->
+      </a-box>
+
+      <!-- Le ciel et le sol -->
+      <a-sky src="#skyTexture"></a-sky>
+      <a-plane src="#groundTexture" rotation="-90 0 0" width="30" height="30"></a-plane>
+
+      <!-- La caméra -->
+      <a-camera position="0 7 5">
+        <!-- Le curseur en rouge -->
+        <a-cursor color="red"/>
+      </a-camera>
+
+      <!-- Les lumières -->
+      <a-light type="ambient" color="#ff0000" position="-10 0 0" look-at="#box"></a-light>
+      <a-light type="point" color="#00ff00" position="0 5 0"></a-light>
+
+    </a-scene>
+
+    <!-- Script -->
+    <script>
+
+      var box = document.querySelector("#box");
+
+      /* Lors de l'entrée du curseur */
+      box.addEventListener("mouseenter", function() {
+
+        box.setAttribute("scale", {x:2,y:2,z:2});
+        box.setAttribute("src", '#texture');
+
+      });
+
+      /* Lors de la sortie du curseur */
+      box.addEventListener("mouseleave", function() {
+
+        box.setAttribute("scale", {x:1,y:2.5,z:1});
+        box.setAttribute("src", '');
+
+      });
+
+    </script>
+
+  </body>
+
+</html>
